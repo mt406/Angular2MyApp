@@ -7,6 +7,9 @@ import {Employee} from './employee';
 import { Observable } from 'rxjs/Rx';
 import {appService} from './app.service';
 
+import { User } from './user.interface';
+import { Theme } from './theme.interface';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',   

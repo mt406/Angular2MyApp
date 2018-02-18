@@ -1,3 +1,93 @@
-<p>
-  from-demo-component works!
-</p>
+<!--During development, it’s good that you can visualize the value. Angular provided a very useful json Pipe.-->
+<!--<pre>{{f | json }}</pre>-->
+
+ <form #f="ngForm" novalidate>
+
+  <!-- We'll add our form controls here -->
+
+  <div>
+    <label>1.Name</label>
+    <input type="text" name="name" [(ngModel)]="user.name"> 
+    Name Entered is : {{user.name}}
+</div>
+<br/>
+
+<div>
+  <label>2.Age</label>
+  <input type="number" name="age" [(ngModel)]="user.age">
+  Age entered is {{user.age}}
+</div><br/>
+
+<div>
+  <label>3.Gender</label>
+  <div *ngFor="let gender of genders">
+      <label>
+      <input type="radio" name="gender" [(ngModel)]="user.gender" [value]="gender.value">
+      {{gender.display}}
+      </label>
+  </div>
+  Selected Gender is {{user.gender}}
+</div> <br/>
+
+<div>
+  <label>4.Role</label>
+  <select name="role" [(ngModel)]="user.role">
+      <option *ngFor="let role of roles" [value]="role.value">  
+      {{role.display}}
+      </option>
+  </select>
+  Selected Role is : {{user.role}}
+</div><br/>
+
+
+<div>
+  <label>5.Theme</label>
+  <select name="theme" [(ngModel)]="user.theme">
+      <option *ngFor="let theme of themes" [ngValue]="theme">  
+          {{theme.display}}
+      </option>
+  </select>
+  Selected Theme is : {{user.theme}}
+</div><br/>
+
+<div>
+  <label>6.Topics</label>
+  <select multiple name="topics" [(ngModel)]="user.topics">
+      <option *ngFor="let topic of topics" [value]="topic.value">  
+          {{topic.display}}
+      </option>
+  </select><br/>
+  Selected Topics are : {{user.topics}}
+</div><br/>
+
+<div>
+    <label>7.Checkbox</label>
+  <label>
+      <input type="checkbox" name="isActive" [(ngModel)]="user.isActive">
+      Is Active
+  </label>
+  Checkbox is active : {{user.isActive}}
+</div><br/>
+
+<div>
+    <label>8.Toggle</label>
+  <input type="hidden" name="toggle" [(ngModel)]="user.toggle">
+  <div>
+      <label>
+          <input type="checkbox" [checked]="user.toggle === toggles[0].value" (change)="$event.target.checked? (user.toggle = toggles[0].value) : (user.toggle = toggles[1].value)">
+          {{ toggles[0].display }}
+      </label>
+  </div>
+
+  User toggle value :{{user.toggle}}
+
+
+</div> <br/>
+
+  <button type="submit" (click)="save(f.value, f.valid)">Submit</button>
+
+
+
+
+</form>
+

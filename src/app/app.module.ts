@@ -12,27 +12,29 @@ import { MyNewComponentComponent } from './my-new-component/my-new-component.com
 import { FromDemoComponentComponent } from './from-demo-component/from-demo-component.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { FromDemoReactiveFormComponent } from './from-demo-reactive-form/from-demo-reactive-form.component';
 
 //import {appService} from './app.service'; // We are injecting the sevice inside the component , so commenting from here
 
 const appRoutes: Routes = [
   { path: 'formdemo', component: FromDemoComponentComponent },
+  { path: 'formdemoReactiveForms', component: FromDemoReactiveFormComponent },
   { path: 'formdemo/:id',      component: FromDemoComponentComponent },
   {
     path: 'heroes',
     component: FromDemoComponentComponent,
     data: { title: 'Heroes List' }
   },
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
-  },
+  // { path: '',
+  //   redirectTo: '/heroes',
+  //   pathMatch: 'full'
+  // },
   { path: '**', component: MyNewComponentComponent }
 ];
 
 @NgModule({
   declarations: [ //NOTE: To use or add component inside a model so that it can be used in components of that module
-    AppComponent , MsgComponent, MyNewComponentComponent, FromDemoComponentComponent 
+    AppComponent , MsgComponent, MyNewComponentComponent, FromDemoComponentComponent, FromDemoReactiveFormComponent 
   ],
   imports: [
     BrowserModule,FormsModule ,HttpModule ,
